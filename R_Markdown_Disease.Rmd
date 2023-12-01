@@ -1,0 +1,31 @@
+---
+title: "Diseases in Pennsylvania 2022"
+author: "Todd Frazer"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+### This Data is from 'project_tycho_reports' on SQL. It is authenticated by the University of Pittsburgh. This data shows the number of qualifying diseases during the year of 2022 in the state of Pennsylvania. We have imported the data set from SQL into a spreadsheet. From there the data was cleaned, analyzed, and visualized below. 
+
+```{r disease, echo=TRUE}
+library(ggplot2)
+Disease_Pav1 <- read.csv("C:/Users/toddf/Desktop/Google Data Analytics/Occurence_of_Diseases_in_Pennsylvania_2022/Disease_Data_clean.csv")
+str(Disease_Pav1)
+```
+
+### Below we can see that Measles have the highest percentage of cases of the criteria of diseases. Pertussis, a highly contagious respiratory tract infection, is the 2nd most occurring of the diseases. 
+```{r pressure, echo=FALSE, warning=FALSE}
+ggplot(data = Disease_Pav1) +
+  geom_jitter(mapping = aes(x = disease, y = cases, color = disease))+
+  ylim(0,6500)+
+  labs(title = "Occurrence of Diseases in Pennsylvania (2022)", caption = "Data Source: Project Tycho University of Pittsburgh")+
+  theme(plot.title = element_text(face="bold", size = 14))+
+  annotate("text", x=5, y=2500, label = "Measles have the highest percentage of cases", color="red", fontface= "bold", angle=0)
+```
+
