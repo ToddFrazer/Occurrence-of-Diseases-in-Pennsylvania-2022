@@ -2,9 +2,7 @@
 title: "Diseases in Pennsylvania 2022"
 author: "Todd Frazer"
 date: "`r Sys.Date()`"
-output:
-  html_document: default
-  pdf_document: default
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
